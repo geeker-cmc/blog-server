@@ -13,6 +13,6 @@
       "@/*": ["./*"]
     },
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", ".eslintrc.js", ".prettierrc.js"],
   "exclude": ["node_modules"]
 }

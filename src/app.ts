@@ -6,6 +6,9 @@ import bodyparse from "koa-body";
 import loggerMiddleware from "@/middleware/log4js";
 import logger, { errLogger } from "@/util/logger";
 
+// 路由
+import router from "@/router";
+
 const app = new Koa();
 
 // 根据当前环境加载对应的.env文件
@@ -21,6 +24,10 @@ const PORT = process.env.PORT;
 // 日志
 app.use(loggerMiddleware);
 app.use(bodyparse());
+
+app.use(router.routes()).use(router.allowedMethods());
+
+// 路由
 
 app.listen(PORT, () => {
   logger.info(process.env.DB_USER);
