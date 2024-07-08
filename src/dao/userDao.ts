@@ -1,5 +1,11 @@
-import UserClass, { User } from "@/model/userModel";
+import UserModel, {
+  IUserAttributes,
+  IUserCreationAttributes,
+} from "@/model/userModel";
 
-export const createUser = async (user: any) => {
-  return await UserClass.create<User>(user);
+export const createUser: (
+  user: IUserCreationAttributes
+) => Promise<IUserAttributes["userId"]> = async user => {
+  const { userId } = await UserModel.create(user);
+  return userId;
 };
